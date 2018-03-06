@@ -11,11 +11,18 @@ namespace MonoGame
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
+        dobbelstenen dices = new dobbelstenen();
+        SpriteFont Arial;
+        SpriteFont Dobbelstenentekst;
+
+        int[] Worpen;
+        Texture2D[] diceTextures = new Texture2D[6];
 
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
+            Worpen = dices.Worp();
         }
 
         /// <summary>
@@ -39,7 +46,14 @@ namespace MonoGame
         {
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
-
+            Arial = Content.Load<SpriteFont>("Arial");
+            Dobbelstenentekst = Content.Load<SpriteFont>("Dobbelstenentekst");
+            diceTextures[0] = Content.Load<Texture2D>("1");
+            diceTextures[1] = Content.Load<Texture2D>("2");
+            diceTextures[2] = Content.Load<Texture2D>("3");
+            diceTextures[3] = Content.Load<Texture2D>("4");
+            diceTextures[4] = Content.Load<Texture2D>("5");
+            diceTextures[5] = Content.Load<Texture2D>("6");
             // TODO: use this.Content to load your game content here
         }
 
@@ -63,7 +77,7 @@ namespace MonoGame
                 Exit();
 
             // TODO: Add your update logic here
-
+            
             base.Update(gameTime);
         }
 
@@ -73,10 +87,15 @@ namespace MonoGame
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(Color.DarkRed);
+            GraphicsDevice.Clear(Color.BurlyWood);
 
             // TODO: Add your drawing code here
+            spriteBatch.Begin();
 
+            spriteBatch.DrawString(Dobbelstenentekst, "Dobbelstenen" , new Vector2(250, 0), Color.Black);
+            spriteBatch.Draw(diceTextures[Worpen[0] - 1], new Rectangle(200, 100, 100, 100), Color.White);
+            spriteBatch.Draw(diceTextures[Worpen[1] - 1], new Rectangle(350, 100, 100, 100), Color.White);
+            spriteBatch.End();
             base.Draw(gameTime);
         }
     }
