@@ -14,6 +14,8 @@ namespace MonoGame
         dobbelstenen dices = new dobbelstenen();
         SpriteFont Arial;
         SpriteFont Dobbelstenentekst;
+        
+    
 
         int[] Worpen;
         Texture2D[] diceTextures = new Texture2D[6];
@@ -23,6 +25,12 @@ namespace MonoGame
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
             Worpen = dices.Worp();
+            graphics.IsFullScreen = false;
+            graphics.PreferredBackBufferWidth = 450;
+            graphics.PreferredBackBufferHeight = 300;
+        
+            graphics.ApplyChanges();
+
         }
 
         /// <summary>
@@ -92,9 +100,10 @@ namespace MonoGame
             // TODO: Add your drawing code here
             spriteBatch.Begin();
 
-            spriteBatch.DrawString(Dobbelstenentekst, "Dobbelstenen" , new Vector2(250, 0), Color.Black);
-            spriteBatch.Draw(diceTextures[Worpen[0] - 1], new Rectangle(200, 100, 100, 100), Color.White);
-            spriteBatch.Draw(diceTextures[Worpen[1] - 1], new Rectangle(350, 100, 100, 100), Color.White);
+            spriteBatch.DrawString(Dobbelstenentekst, "Dobbelstenen" , new Vector2(100, 0), Color.Black);
+            spriteBatch.DrawString(Dobbelstenentekst, "+" , new Vector2(215, 125), Color.Black);
+            spriteBatch.Draw(diceTextures[Worpen[0] - 1], new Rectangle(100, 100, 100, 100), Color.White);
+            spriteBatch.Draw(diceTextures[Worpen[1] - 1], new Rectangle(250, 100, 100, 100), Color.White);
             spriteBatch.End();
             base.Draw(gameTime);
         }
