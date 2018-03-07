@@ -93,6 +93,8 @@ namespace MonoGame
             spriteBatch.Begin();
 
             spriteBatch.DrawString(Dobbelstenentekst, "Dobbelstenen" , new Vector2(250, 0), Color.Black);
+            spriteBatch.DrawString(Dobbelstenentekst, "+", new Vector2(315, 125), Color.Black);
+            spriteBatch.DrawString(Dobbelstenentekst, "=", new Vector2(470, 125), Color.Black);
             spriteBatch.Draw(diceTextures[Worpen[0] - 1], new Rectangle(200, 100, 100, 100), Color.White);
             spriteBatch.Draw(diceTextures[Worpen[1] - 1], new Rectangle(350, 100, 100, 100), Color.White);
             spriteBatch.End();
