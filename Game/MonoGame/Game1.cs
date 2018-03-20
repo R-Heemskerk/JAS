@@ -15,10 +15,11 @@ namespace MonoGame
         SpriteFont Arial;
         SpriteFont Dobbelstenentekst;
         
-    
-
+        int Volgende;
+        Texture2D VolgendePijl;
         int[] Worpen;
         Texture2D[] diceTextures = new Texture2D[6];
+        
 
         public Game1()
         {
@@ -56,12 +57,15 @@ namespace MonoGame
             spriteBatch = new SpriteBatch(GraphicsDevice);
             Arial = Content.Load<SpriteFont>("Arial");
             Dobbelstenentekst = Content.Load<SpriteFont>("Dobbelstenentekst");
-            diceTextures[0] = Content.Load<Texture2D>("1");
-            diceTextures[1] = Content.Load<Texture2D>("2");
-            diceTextures[2] = Content.Load<Texture2D>("3");
-            diceTextures[3] = Content.Load<Texture2D>("4");
-            diceTextures[4] = Content.Load<Texture2D>("5");
-            diceTextures[5] = Content.Load<Texture2D>("6");
+            diceTextures[0] = Content.Load<Texture2D>("1");// dobbelsteen 1
+            diceTextures[1] = Content.Load<Texture2D>("2");// dobbelsteen 2
+            diceTextures[2] = Content.Load<Texture2D>("3");// dobbelsteen 3
+            diceTextures[3] = Content.Load<Texture2D>("4");// dobbelsteen 4
+            diceTextures[4] = Content.Load<Texture2D>("5");// dobbelsteen 5
+            diceTextures[5] = Content.Load<Texture2D>("6");// dobbelsteen 6
+            VolgendePijl = Content.Load<Texture2D>("Volgende");// volgende pijl
+
+
             // TODO: use this.Content to load your game content here
         }
 
@@ -101,9 +105,10 @@ namespace MonoGame
             spriteBatch.Begin();
 
             spriteBatch.DrawString(Dobbelstenentekst, "Dobbelstenen" , new Vector2(100, 0), Color.Black);
-            spriteBatch.DrawString(Dobbelstenentekst, "+" , new Vector2(215, 125), Color.Black);
-            spriteBatch.Draw(diceTextures[Worpen[0] - 1], new Rectangle(100, 100, 100, 100), Color.White);
-            spriteBatch.Draw(diceTextures[Worpen[1] - 1], new Rectangle(250, 100, 100, 100), Color.White);
+            spriteBatch.DrawString(Dobbelstenentekst, "+" , new Vector2(215, 112), Color.Black);
+            spriteBatch.Draw(diceTextures[Worpen[0] - 1], new Rectangle(100, 80, 100, 100), Color.White);
+            spriteBatch.Draw(diceTextures[Worpen[1] - 1], new Rectangle(250, 80, 100, 100), Color.White);
+            spriteBatch.Draw(VolgendePijl, new Rectangle(188, 210, 70, 70), Color.White);
             spriteBatch.End();
             base.Draw(gameTime);
         }

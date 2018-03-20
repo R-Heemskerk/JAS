@@ -22,7 +22,6 @@ namespace MonoGame
             int value = (int)(random.NextDouble() * 6) + 1;
             Console.WriteLine(value);
             return value;
-            
         }
     
 
